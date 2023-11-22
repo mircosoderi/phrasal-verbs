@@ -1,4 +1,4 @@
-# phrasal-verbs
+# Phrasal Verbs
 Pure HTML/JS application for practicing with English phrasal verbs.
 
 As a developer, add more example usages to the sentences array to make the application more complete.
