@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Phrasal verbs in action</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<body style="font-size:x-large; font-family: sans-serif;">
+<h1>Phrasal verbs in action</h1>
+<script>
+
+var sentences = [
+"In mountaneering, if you are descending a steep or vertical drop using a rope, you are *abbing off|abseiling off*.",
+"To *abate of* means to lessen, to subtract something from.",
+"I don't agree with it, but I'll *abide by* the decision to give the reward to her.",
+"The defendent has *abided by* my ruling in good faith.",
+"He may have shown his true colors, but he's supported me for years, so I'll *abide by* him.",
+"She has served me loyally, *abiding by* my rule for almost my entire life.",
+"The wilderness *abounds in* traps.",
+"This pond *abounds with* fish.",
+"Sorry, what did you say? I guess I had *absorbed myself in* my painting.",
+"His land *abuts on* the road.",
+"I don't have to *account for* anything to you.",
+"The storekeeper was expected to *account for* any material removed.",
+"The torrential downpour would *account for* the saturated state of the land.",
+"German speakers *accounted for* 37% of the population.",
+"Coyotes *account for* more rabbits than hunters do.",
+"The man carried with him a salacious reputation and thus was little *accounted of* among the nobility of the city.",
+"I don't have to *account to* you for my actions.",
+"Mr. Clay was *accredited with* these views.",
+"I *aced into* the history class at the last minute.",
+"I've been training really hard this year so that I don't get *aced out* in the finals again.",
+"He *ached for* her as he'd never desired any woman.",
+"The policeman decided to *act on|act upon* the tip from his informant.",
+"He keeps telling me about wanting to make a move, but he hasn't worked up to *acting on* it yet.",
+"World leaders have repeatedly stated that we must *act on* climate change.",
+"She's a street performer, so she *acts out* on Ninth Street.",
+"Despite already being aware, he will be *acting out* the pretence of a surprise.",
+"I've wanted to do this for so long, but I never thought I could *act it out*.",
+"I know you're angry, but you can't *act out* and break dishes like that.",
+"When her jaw was wired shut, she had *acted out* what she needed.",
+"My allergies *act up* during hay fever season.",
+"Children may *act up* in class in an effort to get attention.",
+"*Acting up* is always recommended when you find yourself under a new boss."
+];
+
+var sentence = sentences[Math.floor(Math.random() * sentences.length)];
+document.write(sentence.split("*")[0] + "<input type=\"text\" name=\"question\" id=\"question\" size=\"20\" data-answer=\"" + sentence.split("*")[1] + "\" style=\"font-size: x-large; font-family: sans-serif;\">" + sentence.split("*")[2]);
+
+const ough = setTimeout(function() {
+	$("#question").prop("disabled",true);
+	$("#question").css("border","thick solid gray"); 
+	$("#question").css("font-weight","bold");
+	$("#question").css("color","gray");
+	$("#question").css("background","white"); 
+	$("#question").val($("#question").data("answer").split("|")[0]);
+	setTimeout(function() {location.reload();}, 5000);
+}, 25000);
+
+$("#question").on( "keyup", function() { 
+	if($("#question").data("answer").split("|").includes($("#question").val())) {
+		clearTimeout(ough);
+		$("#question").prop("disabled",true);
+		$("#question").css("border","thick solid green"); 
+		$("#question").css("background","white"); 
+		$("#question").css("color","green");
+		$("#question").css("font-weight","bold");
+		setTimeout(function() {location.reload();}, 2500);
+	}
+	else {
+		if($("#question").data("answer").split("|").filter((answer) => answer.startsWith($("#question").val()) ).length) {
+			$("#question").css("color","green");
+		}
+		else { 
+			$("#question").css("color","red");
+		}
+	}
+});
+
+$("#question").focus();
+</script>
+<div style="font-size:small; color:gray; margin-top:3em;">Sources:<ul>
+	<li><a href="https://en.wiktionary.org/w/index.php?title=Category:English_phrasal_verbs" title="Wikipedia">https://en.wiktionary.org/w/index.php?title=Category:English_phrasal_verbs</a></li>
+	<li><a href="https://www.thefreedictionary.com/" title="The Free Dictionary">https://www.thefreedictionary.com/</a></li>
+</ul>.
+</body> 
+</html>
